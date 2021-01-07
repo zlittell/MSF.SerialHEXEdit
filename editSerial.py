@@ -136,12 +136,13 @@ with open(inputHex,'r') as inputWriter:
             if memoryLocation in line:
                 print ("Original serial line is: " + line, end='')
                 rLine = "0A" + memoryLocation + "00" + convertedSerial
+                #calculate checksum of byte string
                 wrapped = wrap(rLine, 2)
                 sumValue = 0;
                 for value in wrapped:
                     sumValue += int(value, 16)
-                #get only last two digits and subtract from 100 then convert that to string
-                checksumValue = (format((100 - (abs(sumValue) % 100)),'02x'))
+                checksumValue = -(sumValue % 256)
+                checksumValue = '%2X' % (checksumValue & 0xFF)
                 rLine += checksumValue
                 rLine = ":" + rLine + "\n"
                 print("New serial line is: " + rLine, end='')
