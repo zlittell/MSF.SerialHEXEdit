@@ -1,4 +1,5 @@
-#**Serial Number Editor**
+# **Serial Number Editor**
+
 Replaces serial numbers stored in hex files at specific memory locations.
 
 The serial number needs to be stored on its own line in memory.
