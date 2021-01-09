@@ -66,6 +66,7 @@ for current_argument, current_value in arguments:
         print ("Output file name: " + current_value)
         outputHex = current_value
     elif current_argument in ("-l", "--location"):
+        current_value = current_value.upper()
         print ("Serial Memory Location: " + current_value)
         memoryLocation = current_value
     elif current_argument in ("-t", "--tracker"):
