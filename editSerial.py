@@ -142,9 +142,8 @@ with open(inputHex,'r') as inputWriter:
                 sumValue = 0;
                 for value in wrapped:
                     sumValue += int(value, 16)
-                checksumValue = -(sumValue % 256)
-                checksumValue = '%2X' % (checksumValue & 0xFF)
-                rLine += checksumValue
+                checksumValue = (-(sumValue % 256) & 0xFF)
+                rLine += str.format('{:02X}', checksumValue)
                 rLine = ":" + rLine + "\n"
                 print("New serial line is: " + rLine, end='')
                 outputWriter.write(rLine)
